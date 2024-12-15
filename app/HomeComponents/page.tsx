@@ -9,6 +9,9 @@ export default function HomeComponents() {
             >
                 <span>Seyed Ahmad</span><span>Gholami</span>
             </h1>
+            <p className="text-xl md:text-2xl">
+          A Modern Blog Platform to Share Posts
+        </p>
 
             {/* کادرهای اصلی */}
             <div className="mt-8 grid gap-2 md:mt-16 md:grid-cols-3">
