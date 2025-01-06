@@ -6,7 +6,7 @@ export default function HomeComponents() {
             {/* عنوان */}
             <h1
                 id="title"
-                className="inline-flex flex-col gap-1 transition font-display text-6xl font-bold leading-none md:text-[8rem] bg-gradient-to-r from-20% bg-clip-text text-transparent from-emerald-400 to-yellow-300"
+                className="inline-flex flex-col gap-1 transition font-display text-6xl font-bold items-center leading-none md:text-[8rem] bg-gradient-to-r from-20% bg-clip-text text-transparent from-emerald-400 to-yellow-300"
             >
                 <span>Seyed Ahmad</span><span>Gholami</span>
             </h1>
@@ -24,10 +24,10 @@ export default function HomeComponents() {
                         resetTitleColor("from-emerald-400", "to-yellow-300")
                     }
                 >
-                    <h2 className="text-base md:text-2xl md:font-bold mb-4">Redis</h2>
-                    <p>Serverless database with Redis API</p>
+                    <h2 className="text-base md:text-2xl md:font-bold mb-4">Website</h2>
+                    <p>Create React & Next websites</p>
                     <button className="mt-4 flex items-center px-4 py-2 bg-white text-black rounded group-hover:bg-gradient-to-r from-red-500 to-yellow-500 transition duration-300">
-                        Create Database <FiArrowUpRight />
+                        Create website <FiArrowUpRight />
                     </button>
                 </div>
 
@@ -41,10 +41,10 @@ export default function HomeComponents() {
                         resetTitleColor("from-emerald-400", "to-yellow-300")
                     }
                 >
-                    <h2 className="text-base md:text-2xl md:font-bold  mb-4">Vector</h2>
-                    <p>Serverless Vector Database</p>
+                    <h2 className="text-base md:text-2xl md:font-bold  mb-4">SEO</h2>
+                    <p>Optimise Website & Content</p>
                     <button className="mt-4 flex items-center px-4 py-2 bg-white text-black rounded group-hover:bg-gradient-to-r from-purple-500 to-indigo-500 transition duration-300">
-                        Create Index <FiArrowUpRight />
+                        Optimise website <FiArrowUpRight />
                     </button>
                 </div>
 
@@ -56,12 +56,12 @@ export default function HomeComponents() {
                         resetTitleColor("from-emerald-400", "to-yellow-300")
                     }
                 >
-                    <h2 className="text-base md:text-2xl md:font-bold mb-4">QStash</h2>
-                    <p>Messaging for the Serverless</p>
+                    <h2 className="text-base md:text-2xl md:font-bold mb-4">Wordpress</h2>
+                    <p>Setup Wordpress for You</p>
                     <button
 
                         className="mt-4 flex items-center px-4 py-2 bg-white text-black rounded group-hover:bg-gradient-to-r from-green-500 to-teal-500 transition duration-300">
-                        Publish Messages <FiArrowUpRight />
+                        Order Wordpress <FiArrowUpRight />
                     </button>
                 </div>
             </div>
