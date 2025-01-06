@@ -1,0 +1,24 @@
+/* جلوگیری از اسکرول افقی در کل صفحه */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* نوار متحرک فقط برای حالت موبایل */
+@media (max-width: 768px) {
+    .animate-scroll {
+        display: flex;
+        width: max-content; /* عرض محتوای تکرارشده */
+        animation: scroll 10s linear infinite; /* انیمیشن خطی بی‌نهایت */
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0); /* شروع از موقعیت اولیه */
+        }
+        100% {
+            transform: translateX(-50%); /* حرکت به‌اندازه نصف محتوا */
+        }
+    }
+}

@@ -1,4 +1,6 @@
-import HomeComponents from "./HomeComponents/page";
+import HomeComponents from "./Components/HomeComponents/page";
+import ProfesionalSkills from "./Components/HomeComponents/ProfesionalSkills";
+import MyServices from "./Components/HomeComponents/Services";
 
 export default function App() {
   return (
@@ -11,6 +13,8 @@ export default function App() {
       
       
       <HomeComponents />
+      <ProfesionalSkills />
+      <MyServices />
     </main>
   );
 }
