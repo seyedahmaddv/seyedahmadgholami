@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import {
   Dialog,
@@ -45,7 +46,7 @@ export default function Example() {
         <div className="flex lg:flex-1">
           <Link href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Seyed Ahmad</span>
-            <img
+            <Image
               alt=""
               src="/logo.png"
               className="h-8 w-auto"
@@ -129,7 +130,7 @@ export default function Example() {
           <div className="flex items-center justify-between">
             <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
+              <Image
                 alt=""
                 src="/logo.png"
                 className="h-8 w-auto"
