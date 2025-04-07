@@ -28,7 +28,44 @@ const POST_GRAPHQL_FIELDS = `
   }
 `;
 
-async function fetchGraphQL(query: string, preview = false): Promise<any> {
+interface Post {
+  slug: string;
+  title: string;
+  coverImage: {
+    url: string;
+  };
+  date: string;
+  author: {
+    name: string;
+    picture: {
+      url: string;
+    };
+  };
+  excerpt: string;
+  content: {
+    json: any; // این می‌تواند با نوع دقیق‌تر جایگزین شود
+    links: {
+      assets: {
+        block: {
+          sys: {
+            id: string;
+          };
+          url: string;
+          description: string;
+        }[];
+      };
+    };
+  };
+}
+interface GraphQLResponse {
+  data?: {
+    postCollection?: {
+      items?: Post[];
+    };
+  };
+}
+
+async function fetchGraphQL(query: string, preview = false): Promise<GraphQLResponse> {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
@@ -47,15 +84,15 @@ async function fetchGraphQL(query: string, preview = false): Promise<any> {
   ).then((response) => response.json());
 }
 
-function extractPost(fetchResponse: any): any {
-  return fetchResponse?.data?.postCollection?.items?.[0];
+function extractPost(fetchResponse: GraphQLResponse): Post | null {
+  return fetchResponse?.data?.postCollection?.items?.[0] ?? null;
 }
 
-function extractPostEntries(fetchResponse: any): any[] {
-  return fetchResponse?.data?.postCollection?.items;
+function extractPostEntries(fetchResponse: GraphQLResponse): Post[] {
+  return fetchResponse?.data?.postCollection?.items ?? [];
 }
 
-export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
+export async function getPreviewPostBySlug(slug: string | null): Promise<Post | null> {
   const entry = await fetchGraphQL(
     `query {
       postCollection(where: { slug: "${slug}" }, preview: true, limit: 1) {
@@ -69,7 +106,7 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
   return extractPost(entry);
 }
 
-export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
+export async function getAllPosts(isDraftMode: boolean): Promise<Post[]> {
   const entries = await fetchGraphQL(
     `query {
       postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
@@ -88,7 +125,7 @@ export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
 export async function getPostAndMorePosts(
   slug: string,
   preview: boolean,
-): Promise<any> {
+): Promise< {post: Post | null; morePosts: Post[]}> {
   const entry = await fetchGraphQL(
     `query {
       postCollection(where: { slug: "${slug}" }, preview: ${

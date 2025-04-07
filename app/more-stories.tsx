@@ -2,6 +2,25 @@ import Link from "next/link";
 import Avatar from "./avatar";
 import DateComponent from "./date";
 import CoverImage from "./cover-image";
+interface Author {
+  name: string;
+  picture: {
+    url: string;
+  };
+}
+
+interface CoverImage {
+  url: string;
+}
+
+interface PostPreviewProps {
+  title: string;
+  coverImage: CoverImage;
+  date: string;
+  excerpt: string;
+  author: Author;
+  slug: string;
+}
 
 function PostPreview({
   title,
@@ -10,14 +29,7 @@ function PostPreview({
   excerpt,
   author,
   slug,
-}: {
-  title: string;
-  coverImage: any;
-  date: string;
-  excerpt: string;
-  author: any;
-  slug: string;
-}) {
+}: PostPreviewProps) {
   return (
     <div>
       <div className="mb-5">
@@ -36,8 +48,15 @@ function PostPreview({
     </div>
   );
 }
-
-export default function MoreStories({ morePosts }: { morePosts: any[] }) {
+interface Post {
+  slug: string;
+  title: string;
+  coverImage: CoverImage;
+  date: string;
+  author: Author;
+  excerpt: string;
+}
+export default function MoreStories({ morePosts }: { morePosts: Post[] }) {
   return (
     <section>
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">

@@ -1,19 +1,27 @@
 import ContentfulImage from "../lib/contentful-image";
 import Link from "next/link";
 
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
+function cn(...classes: (string | boolean | undefined | Record<string, string | boolean | undefined>)[]): string {
+  return classes
+    .filter(Boolean)
+    .map(item => {
+      if (typeof item === 'object' && item !== null) {
+        return Object.entries(item)
+          .filter(([_, value]) => Boolean(value))
+          .map(([key]) => key)
+          .join(' ');
+      }
+      return item;
+    })
+    .filter(Boolean)
+    .join(' ');
 }
-
-export default function CoverImage({
-  title,
-  url,
-  slug,
-}: {
+interface CoverImageProps {
   title: string;
   url: string;
   slug?: string;
-}) {
+}
+export default function CoverImage({ title, url, slug }: CoverImageProps) {
   const image = (
     <ContentfulImage
       alt={`Cover Image for ${title}`}
