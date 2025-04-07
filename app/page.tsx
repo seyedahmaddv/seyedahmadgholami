@@ -7,12 +7,9 @@ import Header from "./Components/ui/Header";
 export default function App() {
   return (
     <>
+    <Header />
     <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-      {/* Header */}
-      {/* <Header /> */}
-
-      
-      
+                  
       <HomeComponents />
       <ProfesionalSkills />
       <MyServices />

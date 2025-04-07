@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@supabase/auth-helpers-nextjs": "^0.10.0",
-    "@supabase/ssr": "^0.5.2",
-    "@supabase/supabase-js": "^2.47.12",
+    "@netlify/plugin-nextjs": "^5.10.3",
     "@tinymce/tinymce-react": "^5.1.1",
+    "framer-motion": "^12.6.3",
     "next": "^14.2.23",
     "react": "^18",
     "react-dom": "^18",
