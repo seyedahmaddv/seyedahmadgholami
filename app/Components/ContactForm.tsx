@@ -1,6 +1,6 @@
 'use client'
 import { useState, ChangeEvent, FormEvent } from 'react';
-
+import NetlifyForm from '@/lib/NetlifyForm';
 type FormData = {
   name: string;
   email: string;
@@ -29,7 +29,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form 
+    <NetlifyForm  
       name="contact"
       method="POST"
       data-netlify="true"
@@ -97,7 +97,7 @@ const ContactForm = () => {
       >
         Send Message
       </button>
-    </form>
+    </NetlifyForm >
   );
 };
 
