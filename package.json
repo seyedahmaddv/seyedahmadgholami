@@ -12,6 +12,7 @@
     "@contentful/rich-text-react-renderer": "^15.17.1",
     "@contentful/rich-text-types": "^16.2.1",
     "@contentful/vercel-nextjs-toolkit": "latest",
+    "@headlessui/react": "^2.2.1",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/typography": "0.5.9",
     "@types/node": "^20.5.0",
@@ -26,8 +27,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.6",
-    "tailwindcss-rtl": "^0.9.0"
+    "tailwindcss-rtl": "^0.9.0",
+    "typescript": "^5.1.6"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
