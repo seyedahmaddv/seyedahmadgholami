@@ -35,7 +35,7 @@ const ContactForm = () => {
       data-netlify="true"
       onSubmit={handleSubmit}
       className="space-y-6 bg-white p-8 rounded-xl shadow-lg"
-      action="/success"
+      
     >
       <input type="hidden" name="form-name" value="contact" />
       
