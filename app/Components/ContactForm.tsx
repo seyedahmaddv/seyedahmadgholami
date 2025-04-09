@@ -1,6 +1,6 @@
 'use client'
 import { useState, ChangeEvent, FormEvent } from 'react';
-import NetlifyForm from '@/lib/NetlifyForm';
+
 type FormData = {
   name: string;
   email: string;
@@ -24,22 +24,37 @@ const ContactForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    const form = e.target as HTMLFormElement;
+    const formDataToSend = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      body: formDataToSend,
+    })
+    .then(() => {
+      console.log('Form successfully submitted');
+    })
+    .catch((error) => {
+      console.error('Form submission error:', error);
+    });
   };
 
   return (
-    <NetlifyForm  
+    <form
       name="contact"
       method="POST"
       data-netlify="true"
+      data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="space-y-6 bg-white p-8 rounded-xl shadow-lg"
-      
     >
       <input type="hidden" name="form-name" value="contact" />
-      
-      {/* Name Field */}
+      <p className="hidden">
+        <label>
+          Don’t fill this out: <input name="bot-field" />
+        </label>
+      </p>
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
           Name
@@ -56,7 +71,6 @@ const ContactForm = () => {
         />
       </div>
 
-      {/* Email Field */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
           Email
@@ -73,7 +87,6 @@ const ContactForm = () => {
         />
       </div>
 
-      {/* Message Field */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
           Message
@@ -90,14 +103,13 @@ const ContactForm = () => {
         ></textarea>
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       >
         Send Message
       </button>
-    </NetlifyForm >
+    </form>
   );
 };
 
