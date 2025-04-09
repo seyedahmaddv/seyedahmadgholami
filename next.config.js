@@ -6,8 +6,7 @@ const nextConfig = {
       domains: ['images.ctfassets.net'], // اگر از contentful استفاده می‌کنید
     },
     env: {
-      // فعال کردن پشتیبانی از فرم‌های نتلیفی
-      NETLIFY_NEXT_FORMS_SUPPORT: "true"
+     
     }
   };
   
